@@ -20,6 +20,7 @@ from drf_spectacular.views import (SpectacularAPIView, SpectacularRedocView, Spe
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/todos/', include("todos.urls")),
+    path('api/tetris/', include("tetris.urls")),
     path("api-auth/", include("rest_framework.urls")),
     path("api/dj-rest-auth/", include("dj_rest_auth.urls")),
     path("api/v1/dj-rest-auth/registration/", include("dj_rest_auth.registration.urls")),

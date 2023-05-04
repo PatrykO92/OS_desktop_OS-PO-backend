@@ -53,32 +53,36 @@ INSTALLED_APPS = [
     # local
     'accounts.apps.AccountsConfig',
     'todos.apps.TodosConfig',
+    'tetris.apps.TetrisConfig',
 ]
 
 REST_FRAMEWORK = {
-"DEFAULT_PERMISSION_CLASSES": [
-"rest_framework.permissions.IsAuthenticatedOrReadOnly",
-],
-"DEFAULT_AUTHENTICATION_CLASSES": [
-    "rest_framework.authentication.SessionAuthentication",
-    "rest_framework.authentication.TokenAuthentication",
-],
-"DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema", 
-}
+    "DEFAULT_PERMISSION_CLASSES": [
+    "rest_framework.permissions.IsAuthenticatedOrReadOnly",
+    ],
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        "rest_framework.authentication.TokenAuthentication",
+    ],
+    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema", 
+    }
 
 SPECTACULAR_SETTINGS = {
-"TITLE": "OS_DESKTOP_BACKEND",
-"DESCRIPTION": "Backend to support my main project OS_desktop_OS-PO_frontend",
-"VERSION": "0.5.0",
-}
+    "TITLE": "OS_DESKTOP_BACKEND",
+    "DESCRIPTION": "Backend to support my main project OS_desktop_OS-PO_frontend",
+    "VERSION": "0.5.0",
+    }
 
-
+# TODO Save as env
 CORS_ORIGIN_WHITELIST = (
-"http://localhost:3000",
-"http://localhost:8000",
-)
+    "https://operating-system-po.netlify.app",
+    "http://localhost:3000",
+    "http://localhost:8000",
+    )
 
-CSRF_TRUSTED_ORIGINS = ["http://localhost:3000"]
+
+# TODO Save as env
+CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://operating-system-po.netlify.app/"]
 
 
 MIDDLEWARE = [
@@ -164,6 +168,9 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
 AUTH_USER_MODEL = "accounts.CustomUser"
+
+# TODO Normal email backend
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 SITE_ID = 1
