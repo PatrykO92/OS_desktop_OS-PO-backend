@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     "django.contrib.sites", 
     #3d Part
+    "avatar",
     "rest_framework",
     "corsheaders",
     "rest_framework.authtoken",
@@ -80,6 +81,11 @@ CORS_ORIGIN_WHITELIST = (
     "http://localhost:8000",
     )
 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'https://operating-system-po.netlify.app',
+]
+
 
 # TODO Save as env
 CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://operating-system-po.netlify.app/"]
@@ -88,6 +94,7 @@ CSRF_TRUSTED_ORIGINS = ["http://localhost:3000", "https://operating-system-po.ne
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -120,16 +127,23 @@ WSGI_APPLICATION = 'os_backend_project.wsgi.app'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {'default': {
-    'ENGINE': 'django.db.backends.postgresql',
-    'URL': os.getenv('POSTGRES_URL'),
-    'NAME': os.getenv('PGNAME'),
-    'USER': os.getenv('PGUSER'),
-    'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
-    'HOST': os.getenv('PGHOST'),
-    'PORT': os.getenv('PGPORT'),
-    }
-}
+
+if os.getenv('DEVELOPMENT'):
+    DATABASES = {'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }}
+   
+else:
+     DATABASES = {'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv('PGNAME'),
+        'USER': os.getenv('PGUSER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('PGHOST'),
+        'PORT': os.getenv('PGPORT'),
+    }}
+
 
 
 # Password validation
@@ -178,3 +192,6 @@ AUTH_USER_MODEL = "accounts.CustomUser"
 # TODO Normal email backend
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
 SITE_ID = 1
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
