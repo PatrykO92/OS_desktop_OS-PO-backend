@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     "dj_rest_auth.registration",
     "drf_spectacular",
     # local
-    'accounts.apps.AccountsConfig',
     'todos.apps.TodosConfig',
     'tetris.apps.TetrisConfig',
 ]
@@ -187,7 +186,6 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-AUTH_USER_MODEL = "accounts.CustomUser"
 
 # TODO Normal email backend
 EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
