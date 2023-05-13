@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 import os
 from dotenv import load_dotenv
+from .serializers import NewsSerializer
 
 load_dotenv()
 
@@ -10,6 +11,8 @@ NEWS_API_KEY = os.getenv("NEWS_API_KEY")
 
 
 class NewsAPIEndpoint(APIView):
+
+    serializer_class = NewsSerializer
     def get(self, request):
         # Define default values for optional query parameters
         country = "us"
