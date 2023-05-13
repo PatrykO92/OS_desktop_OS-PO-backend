@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     # local
     'todos.apps.TodosConfig',
     'tetris.apps.TetrisConfig',
+    'news_api.apps.NewsApiConfig',
 ]
 
 REST_FRAMEWORK = {

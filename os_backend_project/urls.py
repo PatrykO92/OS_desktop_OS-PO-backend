@@ -22,6 +22,7 @@ from django.conf import settings
 urlpatterns = [
     path("", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
     path('admin/', admin.site.urls),
+    path('api/newsapi/', include("news_api.urls")),
     path('api/todos/', include("todos.urls")),
     path('api/tetris/', include("tetris.urls")),
     path("api-auth/", include("rest_framework.urls")),
