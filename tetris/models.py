@@ -1,5 +1,4 @@
 from django.db import models
-from django.conf import settings
 
 class Score(models.Model):
     score = models.IntegerField()
@@ -7,4 +6,4 @@ class Score(models.Model):
     
 
     def __str__(self) -> str:
-        return f'{self.game_tag} = {self.score}'
+        return f'{self.game_tag} - {self.score}'
