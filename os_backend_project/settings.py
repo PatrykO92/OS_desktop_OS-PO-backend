@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     "dj_rest_auth.registration",
     "drf_spectacular",
     # local
+    'images.apps.ImagesConfig',
     'todos.apps.TodosConfig',
     'tetris.apps.TetrisConfig',
     'news_api.apps.NewsApiConfig',

@@ -1,7 +1,8 @@
 from django.db import models
+from django.conf import settings
 
 class ToDo(models.Model):
-    user = models.CharField(max_length=100)
+    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE,)
     task = models.CharField(max_length=150)
     done = models.BooleanField()
     created_at = models.DateTimeField(auto_now_add=True)
